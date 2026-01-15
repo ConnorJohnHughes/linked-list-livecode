@@ -9,7 +9,15 @@ public class Practice {
         ryan.next = new Node('t', null);
         ryan.next.next = new Node('x', null);
 
-        printList(head);
+        // expected to return true 
+        System.out.println(contains(head, 'x'));
+
+        // expected to return false
+        System.out.println(contains(head, 'e'));
+
+        remove(head, 't');
+
+
 
     }
    
@@ -20,6 +28,33 @@ public class Practice {
             System.out.println(current.value);
             current = current.next;
         }
+    }
+
+    public static boolean contains(Node start, char toFind){
+        Node current = start;
+        while(current != null){
+            if(current.value == toFind){
+                return true;
+            }
+            current = current.next;
+        }
+
+        return false;
+    }  
+
+    // remove the first node that has toRemove
+    public static char remove(Node head, char toRemove){
+        Node current = head;
+
+        while(current.next != null){
+            if(current.next.value == toRemove){
+                current.next = current.next.next;
+                return toRemove;
+            }
+
+            current = current.next; 
+        }
+        return '\0';
     }
 
     
